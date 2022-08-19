@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+
+  accounts:
+    image: henriquegrossdeveloper/accounts:latest
+    mem_limit: 700m
+    ports:
+      - "8080:8080"
+    networks:
+      - henriquegrossdeveloper-network
+    
+  loans:
+    image: henriquegrossdeveloper/loans:latest
+    mem_limit: 700m
+    ports:
+      - "8090:8090"
+    networks:
+      - henriquegrossdeveloper-network
+    
+  cards:
+    image: henriquegrossdeveloper/cards:latest
+    mem_limit: 700m
+    ports:
+      - "9000:9000"
+    networks:
+      - henriquegrossdeveloper-network
+    
+networks:
+  henriquegrossdeveloper-network:
