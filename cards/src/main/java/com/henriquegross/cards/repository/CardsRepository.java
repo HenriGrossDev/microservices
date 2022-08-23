@@ -1,4 +1,4 @@
-package com.henriquegross.cards;
+package com.henriquegross.cards.repository;
 
 import com.henriquegross.cards.model.Cards;
 import org.springframework.data.repository.CrudRepository;

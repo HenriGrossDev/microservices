@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+
+  configserver:
+    image: henriquegrossdeveloper/configserver:latest
+    mem_limit: 700m
+    ports:
+      - "8071:8071"
+    networks:
+     - henriquegrossdeveloper
+      
+  accounts:
+    image: henriquegrossdeveloper/accounts:latest
+    mem_limit: 700m
+    ports:
+      - "8080:8080"
+    networks:
+      - henriquegrossdeveloper
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 45s
+        max_attempts: 3
+        window: 360s
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+  
+  loans:
+    image: henriquegrossdeveloper/loans:latest
+    mem_limit: 700m
+    ports:
+      - "8090:8090"
+    networks:
+      - henriquegrossdeveloper
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 45s
+        max_attempts: 3
+        window: 360s
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+    
+  cards:
+    image: henriquegrossdeveloper/cards:latest
+    mem_limit: 700m
+    ports:
+      - "9000:9000"
+    networks:
+      - henriquegrossdeveloper
+    depends_on:
+      - configserver
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 45s
+        max_attempts: 3
+        window: 360s
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      
+networks:
+  henriquegrossdeveloper:

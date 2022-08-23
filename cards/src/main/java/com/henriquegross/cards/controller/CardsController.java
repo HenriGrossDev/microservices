@@ -3,7 +3,7 @@ package com.henriquegross.cards.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.henriquegross.cards.CardsRepository;
+import com.henriquegross.cards.repository.CardsRepository;
 import com.henriquegross.cards.config.CardsServiceConfig;
 import com.henriquegross.cards.model.Cards;
 import com.henriquegross.cards.model.Customer;
