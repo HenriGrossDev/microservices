@@ -28,7 +28,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.cloud</groupId>
@@ -38,9 +38,7 @@
 					<groupId>com.netflix.ribbon</groupId>
 					<artifactId>ribbon-eureka</artifactId>
 				</exclusion>
-
 			</exclusions>
-
 		</dependency>
 
 		<dependency>
